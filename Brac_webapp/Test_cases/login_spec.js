@@ -2,6 +2,8 @@ var jsondata = require('../Constant_data/data.json')
 var Bracmethods = require('../Page_Objects/login_page_po.js')
 var Bracmethodsdata = new Bracmethods();
 var actualurl = "http://bracdev.firstaccess.co/#/loan"
+//menubar id
+var menubar = element(by.xpath("/html/body/app-root/app-page-layout/div[2]/div[1]/a"));
 
 
 describe('Brac Application Test Cases ', function () {
@@ -10,12 +12,10 @@ describe('Brac Application Test Cases ', function () {
     it('Test case for application title ', function () {
         Bracmethodsdata.ApplicationTitle();
         browser.sleep(2000);
-
-
     })
 
     //Test case for url comparision
-    it('First test case for url launch ', async function () {
+    it('Test case for url launch ', async function () {
         //url from json data
         Bracmethodsdata.getUrl(jsondata.url);
         await browser.sleep(7000);
@@ -35,18 +35,30 @@ describe('Brac Application Test Cases ', function () {
         })
     })
 
+    it('Test case for forget password', async function () {
+        await browser.sleep(3000);
+        Bracmethodsdata.forgetpassword("vinay.v@thresholdsoft.com");
+        await browser.sleep(3000);
+    })
+
+
     //login data
-    it('Second test case for Login page', async function () {
+    it('Test case for Login page', async function () {
         //  Bracmethodsdata.login("vinay","Brac@123");
         Bracmethodsdata.login(jsondata.username, jsondata.password);
         await browser.sleep(5000);
         Bracmethodsdata.dashboardtext();
-        browser.sleep(2000);
-
+        await browser.sleep(7000);
+        //menu click
+        await menubar.click();
+        await browser.sleep(7000);
 
     })
 
 
 })
+
+
+
 
 
