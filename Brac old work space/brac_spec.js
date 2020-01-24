@@ -8,7 +8,7 @@ describe('Brac login functionality', function () {
 
         browser.manage().timeouts().implicitlyWait(30000);
         browser.get("http://bracdev.firstaccess.co/#/loan")
-        browser.manage().window().maximize();
+        browser.manage().window().maximize(); 
 
         //To get current URL
         /*  browser.getCurrentUrl().then(function(url1){
